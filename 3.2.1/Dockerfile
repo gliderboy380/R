@@ -11,12 +11,12 @@ RUN apt-get update && apt-get install -y \
         --no-install-recommends \
         && rm -rf /var/lib/apt/lists/*
 
+ENV R_MAJOR 3
+ENV R_VERSION 3.2.1
+
 ENV HOME /home/user
 RUN useradd --create-home --home-dir $HOME user \
 	&& chown -R user:user $HOME
-
-ENV R_MAJOR 3
-ENV R_VERSION 3.1.2
 
 RUN curl -sSL http://cran.r-project.org/src/base/R-$R_MAJOR/R-$R_VERSION.tar.gz \
         | tar -vxzC /usr/src \
